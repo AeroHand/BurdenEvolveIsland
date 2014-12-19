@@ -1,0 +1,1954 @@
+// Dota Heroes File
+"DOTAAbilities"
+{
+	"Version"		"1"
+	////////==================================尖刺生物==================================================================
+	////////////////////////////
+	///尖刺生物天赋:抵抗
+	///////////////////////////
+	"SpineCreatureAbility_Withstand"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"tiny_craggy_exterior"
+		"Modifiers"
+		{
+			"Withstand_modifier"
+			{
+				"Passive"		"1"
+				"OnAttacked"
+				{
+					"Random"
+					{
+						"Chance"	"25"
+						"OnSuccess"
+						{
+							"ApplyModifier"		
+							{
+								"ModifierName"		"Withstand_bonus_modifier"
+								"Target"			"CASTER"
+							}
+						}
+					}
+				}
+			}
+			"Withstand_bonus_modifier"
+			{
+				"Duration"		"%duration"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"duration"		"3"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"armor_bonus"		"200"
+			}
+		}
+	}
+	////////////////////////////
+	///尖刺生物天赋:防御
+	///////////////////////////
+	"SpineCreatureAbility_Defense"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"tiny_craggy_exterior"
+		"Modifiers"
+		{
+			"Defense_Aura_Modifier"
+			 {
+			 	"Passive"		"1"
+			   "Aura" "Defense_Modifier"
+			   "Aura_Radius" "%radius"
+			   "Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			   "Aura_Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+			   "Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			 }
+			 "Defense_Modifier"
+			 {
+			 	"Properties"
+			     {
+			       "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%armor_bonus"
+			     }
+			 }
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"radius"		"500"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"armor_bonus"		"30"
+			}
+		}
+	}
+	////////////////////////////
+	///尖刺生物天赋:外壳
+	///////////////////////////
+	"SpineCreatureAbility_Shell"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"nyx_assassin_spiked_carapace"
+		"Modifiers"
+		{
+			"Shell_Modifier"
+			{
+				"Passive"	"1"
+				"OnAttacked"
+				{
+					"Damage"
+					{
+						"Target"		"ATTACKER"
+						"Type"			"DAMAGE_TYPE_PURE"
+						"MinDamage"		"%min_damage"
+						"MaxDamage"		"%max_damage"
+					}
+				}
+				"Properties"
+				{
+					 "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%armor_bonus"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"min_damage"		"30"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"max_damage"		"88"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"armor_bonus"		"15"
+			}
+		}
+	}
+	/////////////////////////////////
+	///尖刺生物：钢背  于override
+	/////////////////////////////////
+	/////////////////////////////////
+	///尖刺生物：闪避
+	/////////////////////////////////
+	"SpineCreatureAbility_Dodge"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"phantom_assassin_phantom_strike"
+		"Modifiers"
+		{
+			"Dodge_Modifier"
+			{
+				"Passive"		"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"		"%dodge"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"dodge"		"65"
+			}
+		}
+	}
+	/////////////////////////////////
+	///尖刺生物：坚毅
+	/////////////////////////////////
+	"SpineCreatureAbility_Scrappy"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"skeleton_king_vampiric_aura"
+		"Modifiers"
+		{
+			"Scrappy_Modifier"
+			{
+				"Passive"	"1"
+				"ThinkInterval"		"0.25"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/Ability/SpineCreatureAbility/Scrappy.lua"
+						"Function"			"Scrappy"
+					}
+				}
+			}
+		}
+	}
+	/////////////////////////////////
+	///尖刺生物：千层
+	/////////////////////////////////
+	"SpineCreatureAbility_Melaleuca"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"skeleton_king_vampiric_aura"
+		"Modifiers"
+		{
+			"Melaleuca_Modifier"
+			{
+				"Passive"		"1"
+				"OnAttacked"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"		"Melaleuca_Attacked_Modifier"
+						"Target"			"CASTER"
+					}
+				}
+			}
+			"Melaleuca_Attacked_Modifier"
+			{
+				"Duration"	"%duration"
+				"IsHidden"		"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS"				"%health_bonus"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor_bonus"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"duration"		"15"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"health_bonus"		"20"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"armor_bonus"		"4"
+			}
+		}
+	}
+	/////////////////////////////////
+	///尖刺生物：铁甲
+	/////////////////////////////////
+	"SpineCreatureAbility_Mail"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"sven_warcry"
+		"Modifiers"
+		{
+			"Mail_Modifier"
+			{
+				"Passive"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"		"%physic_damage_raducation"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"physic_damage_raducation"		"88"
+			}
+		}
+	}
+	/////////////////////////////////
+	///尖刺生物：圣甲
+	/////////////////////////////////
+	"SpineCreatureAbility_God_Mail"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"sven_gods_strength"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"God_Mail_Modifier"
+				"Target"				"CASTER"
+			}
+		}
+		"Modifiers"
+		{
+			"God_Mail_Modifier"
+			{
+				"Duration"		"%duration"
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED" //魔法免疫
+					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED" //攻击免疫
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"duration"		"3.5"
+			}
+		}
+	}
+	/////////////////////////////////
+	///尖刺生物：冰甲
+	/////////////////////////////////
+	"SpineCreatureAbility_Icy_Mail"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"lich_frost_armor"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"		"Frost_Mail_Modifier"
+				"Target"			"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"Frost_Mail_Modifier"
+			{
+				"Duration"		"%duration"
+				"OnAttacked"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"DeBuff_Frost_Mail"	
+						"Target"		"ATTACKER"	
+					}
+				}
+				"Properties"
+			    {
+			    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"17"
+			    }
+			}
+			"DeBuff_Frost_Mail"
+			{
+				"IsDebuff"		"1"
+				"Duration"		"%debuff_duration"
+				"Properties"
+			    {
+			        "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "-30"
+			        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"      "-30"
+			    }
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"duration"		"45.0"
+			}
+			"02"
+			{
+				"var_type" "FIELD_FLOAT"
+				"debuff_duration"		"5.0"
+			}
+		}
+	}
+	/////////////////////////////////
+	///尖刺生物：皮甲
+	/////////////////////////////////
+	"SpineCreatureAbility_Leather_Armour"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"sven_warcry"
+		"Modifiers"
+		{
+			"Leather_Armour_Modifier"
+			{
+				"Passive"	"1"
+				"OnAttacked"
+				{
+					"Random"		
+					{
+						"Chance"		"25"
+						"OnSuccess"
+						{
+							"ApplyModier"
+							{
+								"ModifierName"		"Leather_Armour_Damage_Down"
+								"Target"		"CASTER"
+							}
+						}
+					}
+					"ApplyModifier"
+					{
+						"ModifierName"		"Leather_Armour_Debuff"
+						"Target"		"ATTACKER"
+					}
+				}
+				
+			}
+			"Leather_Armour_Debuff"
+			{
+				"Duration"		"%debuff_duration"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"-20"
+				}
+			}
+			"Leather_Armour_Damage_Down"
+			{
+				"Duration"		"%duration"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"		"%physic_damage_raducation"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"physic_damage_raducation"		"88"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"		"0.7"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"debuff_duration"		"5.0"
+			}
+		}
+	}
+	/////////////////////////////////
+	///尖刺生物：护盾 于override
+	/////////////////////////////////
+	////===============================   迅猛生物   =======================================================
+	/////////////////////////////////
+	///迅猛生物：夜行 
+	////////////////////////////////
+	"RapidCreature_Nocturnal"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"night_stalker_hunter_in_the_night"
+		"Modifiers"
+		{
+			"RapidCreature_NocturnalBehavior_Modifier"
+			{
+				"Passive"		"1"
+				"ThinkInterval"			"0.5"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/Ability/RapidCreatureAbility/Nocturnal.lua"
+						"Function"			"Nocturnal"
+					}
+				}
+			}
+		}
+	}
+	/////////////////////////////////
+	///迅猛生物：夜行 - 白天
+	////////////////////////////////
+	"RapidCreature_Nocturnal_Day"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE|DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"night_stalker_hunter_in_the_night"
+		"Modifiers"
+		{
+			"RapidCreature_Nocturnal_Day_Modifier"
+			{
+				"Passive"		"1"
+				"Properties"
+    			{
+    				"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"%health_regen"
+    			}	
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"health_regen"		"1"
+			}
+		}
+	}
+	/////////////////////////////////
+	///迅猛生物：夜行 - 晚上
+	////////////////////////////////
+	"RapidCreature_Nocturnal_Night"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE|DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"night_stalker_hunter_in_the_night"
+		"Modifiers"
+		{
+			"RapidCreature_Nocturnal_Night_Modifier"
+			{
+				"Passive"		"1"
+				"Properties"
+    			{
+    				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%speed_bonus"
+    				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_bonus"
+    			}	
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"speed_bonus"		"65"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"attack_speed_bonus"		"55"
+			}
+		}
+	}
+	/////////////////////////////////
+	///迅猛生物：净化
+	////////////////////////////////
+	"RapidCreature_Purification"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityManaCost"				"75"
+		"AbilityTextureName"			"nevermore_dark_lord"
+		"MaxLevel"					"1"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"		"modifier_item_diffusal_blade"
+				"Target"			"TARGET"
+				"Duration"		"2"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"		"modifier_item_diffusal_blade_slow"
+				"Target"			"TARGET"
+				"Duration"		"4"
+			}
+			"RunScript"
+			{
+				"ScriptFile"		"scripts/vscripts/Ability/RapidCreatureAbility/Purification.lua"
+				"Function"			"Purification"
+				"Target"			"TARGET"
+			}
+		}
+	}
+	/////////////////////////////////
+	///迅猛生物：光环
+	////////////////////////////////
+	"RapidCreature_Aura"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"ursa_earthshock"
+		"Modifiers"
+		{
+			"RapidCreature_Aura_Modifier"
+			 {
+			 	"Passive"		"1"
+			   "Aura" "Rapid_Modifier"
+			   "Aura_Radius" "%radius"
+			   "Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			   "Aura_Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+			   "Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			 }
+			 "Rapid_Modifier"
+			 {
+			 	"Properties"
+			     {
+			       "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%speed_bonus"
+			       "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_bonus"
+			     }
+			 }
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"speed_bonus"		"25"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"attack_speed_bonus"		"35"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"radius"		"500"
+			}
+		}
+	}
+	////////////////////////
+	///迅猛生物：偷袭 于override
+	///////////////////////
+	////////////////////////
+	///迅猛生物：献祭
+	///////////////////////
+	"RapidCreature_Immo"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"MaxLevel"					"1"
+		"AbilityManaCost"				"85"
+		"AbilityTextureName"		"ursa_enrage"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"		"RapidCreature_Immo_Modifier"
+				"Duration"			"%duration"
+				"Target"			"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"RapidCreature_Immo_Modifier"
+			{
+				"ThinkInterval"		"1"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Damage"		"%damage"
+						"Type"			"DAMAGE_TYPE_PURE"
+					}
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT"	"0.05"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"duration"		"15"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"damage"		"33"
+			}
+		}
+	}
+	////////////////////////
+	///迅猛生物：狂奔
+	///////////////////////
+	"RapidCreature_Speeding"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"					"1"
+		"AbilityManaCost"				"45"
+		"AbilityTextureName"		"lion_voodoo"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"		"modifier_faceless_void_chronosphere_speed"
+				"Duration"			"%duration"
+				"TARGET"			"CASTER"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"duration"		"30"
+			}
+		}
+	}
+	////////////////////////
+	///迅猛生物：渴望
+	///////////////////////
+	"RapidCreature_Eager"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"MaxLevel"					"1"
+		"AbilityManaCost"				"60"
+		"AbilityTextureName"		"ursa_overpower"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"		"RapidCreature_Eager_Modifier"
+				"Duration"			"%duration"
+				"Target"			"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"RapidCreature_Eager_Modifier"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT"	"0.15"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%speed_bonus"
+    				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_bonus"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"duration"		"40"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"speed_bonus"		"30"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"attack_speed_bonus"		"60"
+			}
+		}
+	}
+	////////////////////////
+	///迅猛生物：守护
+	///////////////////////
+	"RapidCreature_GuardAura"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"omniknight_guardian_angel"
+		"Modifiers"
+		{
+			"RapidCreature_GuardAura_Modifier"
+			 {
+			 	"Passive"		"1"
+			   "Aura" "Rapid_Guard_Modifier"
+			   "Aura_Radius" "%radius"
+			   "Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			   "Aura_Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+			   "Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			 }
+			 "Rapid_Guard_Modifier"
+			 {
+			 	"Properties"
+			     {
+			       "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%speed_bonus"
+			       "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%health_regen_bonus"
+			     }
+			 }
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"speed_bonus"		"25"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"health_regen_bonus"		"10"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"radius"		"800"
+			}
+		}
+	}
+	////////////////////////
+	///迅猛生物：速禁
+	///////////////////////
+	"RapidCreature_SpeedDown"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"omniknight_degen_aura"
+		"Modifiers"
+		{
+			"RapidCreature_SpeedDownAura_Modifier"
+			 {
+			 	"Passive"		"1"
+			   "Aura" "Rapid_SpeedDown_Modifier"
+			   "Aura_Radius" "%radius"
+			   "Aura_Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+			   "Aura_Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+			   "Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			 }
+			 "Rapid_SpeedDown_Modifier"
+			 {
+			 	"Properties"
+			     {
+			      	"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%speed_bonus"
+    				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_bonus"
+			     }
+			 }
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"speed_bonus"		"-35"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"attack_speed_bonus"		"-55"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"radius"		"320"
+			}
+		}
+	}
+	////=====================融合生物=============================================================
+	//////////////////////////
+	///融合生物：守卫
+	////////////////////////
+	"FuseCreature_Guard"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"venomancer_plague_ward"
+		"Modifiers"
+		{
+			"FuseCreature_WardModifier"
+			{
+				"Passive"		"1"
+				"OnAttacked"
+				{
+					"Random"
+					{
+						"Chance"		"25"
+						"OnSuccess"
+						{
+							"RunScript"
+							{
+								"ScriptFile"			"scripts/vscripts/Ability/FuseCreatureAbility/Ward.lua"
+								"Function"				"Ward"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	//////////////////////////
+	///融合生物：炼金
+	////////////////////////
+	"FuseCreature_Elixir"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"alchemist_goblins_greed"
+		"Modifiers"
+		{
+			"FuseCreature_ElixirModifier"
+			{
+				"Passive"		"1"
+				"OnKill"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"scripts/vscripts/Ability/FuseCreatureAbility/Elixir.lua"
+						"Function"				"Elixir"
+						"Target"				"TARGET"
+					}
+				}
+			}
+		}
+	}
+	//////////////////////////
+	///融合生物：抗拒
+	////////////////////////
+	"FuseCreature_Defying"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"rattletrap_battery_assault"
+		"Modifiers"
+		{
+			"FuseCreature_DefyingModifier"
+			{
+				"Passive"		"1"
+				"OnAttacked"
+				{
+					"Random"
+					{
+						"Chance"		"20"
+						"OnSuccess"
+						{
+							"RunScript"
+							{
+								"ScriptFile"			"scripts/vscripts/Ability/FuseCreatureAbility/Defying.lua"
+								"Function"				"DamageApply"
+							}
+							"Knockback"
+							{
+								"Target"		"ATTACKER"
+								"Duration"		"1"
+								"Distance"		"500"
+								"Height"		"50"
+								"IsFixedDistance"	"500"
+								"ShouldStun"	"2"
+							}
+						}
+
+					}
+				}
+			}
+		}
+	}
+	//////////////////////////
+	///融合生物：诅咒
+	////////////////////////
+	"FuseCreature_Curse"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"witch_doctor_maledict"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/Ability/FuseCreatureAbility/Curse.lua"
+				"Function"				"Curse"
+				"Target"				"TARGET"
+			}
+		}
+	}
+	//////////////////////////
+	///融合生物：自爆
+	////////////////////////
+	"FuseCreature_SelfDestruct"
+	{
+		"BaseClass"					"ability_datadriven"
+		
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT"	
+		"AbilityCastRange"			"50"
+		"AOERadius"					"300"
+		"AbilityTextureName"		"rattletrap_rocket_flare"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"scripts/vscripts/Ability/FuseCreatureAbility/SelfDestruct.lua"
+				"Function"			"SelfDestruct"
+			}
+		}
+	}
+	//////////////////////////
+	///融合生物：引力
+	////////////////////////
+	"FuseCreature_Gravitation"
+	{
+		"BaseClass"		"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"MaxLevel"					"1"
+		"AbilityTextureName"							"earth_spirit_boulder_smash"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"		"movespeed_raducation"
+				"Target"			"CASTER"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/Ability/FuseCreatureAbility/Gravitation.lua"
+				"Function"		"Gravitation"
+				"Target"		"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"Gravitation_Modifier"
+			{
+				"Duration"		"%duration"
+				"Properties"
+    			{
+    				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"			"%movespeed_raducation"
+    			}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"duration"		"5"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"movespeed_raducation"			"80"
+			}
+		}
+	}
+	//////////////////////////
+	///融合生物：毒化
+	////////////////////////
+	"FuseCreature_Poison"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"venomancer_poison_nova"
+		"Modifiers"
+		{
+			"FuseCreature_PoisonModifier"
+			{
+				"Passive"		"1"
+				"OnAttacked"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"		"PoisonModifier"
+						"Target"			"ATTACKER"
+					}
+				}
+			}
+			"PoisonModifier"
+			{
+				"Duration"		"%duration"
+				"ThinkInverval"		"1"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Damage"		"20"
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_PURE"
+					}
+				}
+				"States"
+				{
+					"MODIFIER_STATE_SILENCED"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"Properties"
+			    {
+			        "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "-20"
+			        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"      "-70"
+			    }
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"duration"		"2"
+			}
+		}
+	}
+	////===========================        爆发生物     =================================================
+	//////////////////
+	///爆发生物：倍击
+	//////////////////
+	"ExplosionCreature_Sense"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"juggernaut_blade_fury"
+		"Modifiers"
+		{
+			"ExplosionCreature_Sense_Modifier"
+			{	
+				"Passive"		"1"
+				"OnAttackStart"
+				{
+					"Random"
+					{
+						"Chance"		"40"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName"		"CritModifier"
+								"Target"			"CASTER"
+							}
+						}
+					}
+				}
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"		"CritModifier"
+						"Target"			"CASTER"
+					}
+				}
+			}
+			"CritModifier"
+			{
+				"IsHidden"		"1"
+				"Properties"
+    			{
+    				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"			"250"
+    			}
+			}
+		}
+	}
+	//////////////////
+	///爆发生物：重踏
+	//////////////////
+	"ExplosionCreature_Stomp"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"centaur_hoof_stomp"
+		"AbilityManaCost"			"90"
+		"OnSpellStart"
+		{
+			"Stun"
+			{
+				"Target"
+				{
+					"Center"    "CASTER"
+				    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				    "Radius"    "275"
+				}
+				"Duration"		"%duration"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"duration"		"3.5"
+			}
+		}
+	}
+	//////////////////
+	///爆发生物：积蓄
+	//////////////////
+	"ExplosionCreature_Saving"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"necrolyte_sadist"
+		"Modifiers"
+		{
+			"ExplosionCreature_Saving"
+			{
+				"Passive"		"1"
+				"OnAttackLanded"
+				{
+					"ApplyModifier"
+					{		
+						"ModifierName"					"SavingAttack_Modifier"
+						"Target"			"CASTER"
+					}
+				}
+				"OnKill"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/Ability/ExplosionCreatureAbility/Saving.lua"
+						"Function"		"Saving"
+					}
+				}
+			}
+			"SavingAttack_Modifier"
+			{
+				"Duration"			"15"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"	
+				"Properties"
+    			{
+    				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"		"5"
+    			}
+			}
+			"KillHeroAttackUp"
+			{
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"	
+				"Properties"
+    			{
+    				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"		"100"
+    			}
+			}
+		}
+	}
+	//////////////////
+	//////////////////
+	///爆发生物：破击
+	//////////////////
+	"ExplosionCreature_Wreck"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"ursa_fury_swipes"
+		"Modifiers"
+		{
+			"ExplosionCreature_Wreck_Modifier"
+			{
+				"Passive"		"1"
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance"		"25"
+						"OnSuccess"
+						{
+							"Damage"
+							{
+								"Damage"		"%damage"
+								"Target"		"TARGET"
+								"Type"			"DAMAGE_TYPE_PHYSICAL"
+							}
+							"Stun"
+							{
+								"Target"		"TARGET"
+								"Duration"		"%duration"
+							}
+						}
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"damage"		"225"
+			}
+			"02"
+			{
+				"var_type" "FIELD_FLOAT"
+				"duration"		"0.4"
+			}
+		}
+	}
+	//////////////////
+	///爆发生物：兼备
+	//////////////////
+	"ExplosionCreature_HB"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"phantom_assassin_blur"
+		"Modifiers"
+		{
+			"ExplosionCreature_HB_Modifier"
+			{	
+				"Passive"		"1"
+				"OnAttackStart"
+				{
+					"Random"
+					{
+						"Chance"		"30"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName"		"HBCritModifier"
+								"Target"			"CASTER"
+							}
+						}
+					}
+				}
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"		"HBCritModifier"
+						"Target"			"CASTER"
+					}
+				}
+				"Properties"
+    			{
+    				"MODIFIER_PROPERTY_EVASION_CONSTANT"		"30"
+    			}
+			}
+			"HBCritModifier"
+			{
+				"IsHidden"		"1"
+				"Properties"
+    			{
+    				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"			"200"
+    			}
+			}
+		}
+	}
+	//////////////////
+	///爆发生物：蓄力
+	//////////////////
+	"ExplosionCreature_Care"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"phantom_assassin_phantom_strike"
+		"Modifiers"
+		{
+			"ExplosionCreature_Care_Modifier"
+			{	
+				"Passive"		"1"
+				"OnAttackStart"
+				{
+					"Random"
+					{
+						"Chance"		"10"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName"		"CareCritModifier"
+								"Target"			"CASTER"
+							}
+						}
+					}
+				}
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"		"CareCritModifier"
+						"Target"			"CASTER"
+					}
+				}
+			}
+			"CareCritModifier"
+			{
+				"IsHidden"		"1"
+				"Properties"
+    			{
+    				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"			"600"
+    			}
+			}
+		}
+	}
+	//////////////////
+	///爆发生物：粉碎
+	//////////////////
+	"ExplosionCreature_Crush"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"earthshaker_aftershock"
+		"Modifiers"
+		{
+			"ExplosionCreature_Crush_Modifier"
+			{
+				"Passive"		"1"
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance"		"40"
+						"OnSuccess"
+						{
+							"Damage"
+							{
+								"Damage"		"%damage"
+								"Target"
+								{		
+									"Center"    "CASTER"
+								    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+								    "Radius"    "225"
+								
+								}
+								"Type"			"DAMAGE_TYPE_PHYSICAL"
+							}
+						}
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"damage"		"100"
+			}
+		}
+	}
+	//////////////////
+	///爆发生物：光环
+	//////////////////
+	"ExplosionCreature_Aura"
+	{
+
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"chaos_knight_reality_rift"
+		"Modifiers"
+		{
+			"ExplosionCreature_Aura_Modifier"
+			 {
+			 	"Passive"		"1"
+			   "Aura" "ExplosionCreatureAura_Modifier"
+			   "Aura_Radius" "%radius"
+			   "Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			   "Aura_Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+			   "Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			 }
+			 "ExplosionCreatureAura_Modifier"
+			 {
+			 	"Properties"
+			     {
+			       "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE" "130"
+			     }
+			 }
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"radius"		"700"
+			}
+		}
+	}
+	//////////////////
+	///爆发生物：重击
+	//////////////////
+	"ExplosionCreature_Bash"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"chaos_knight_chaos_bolt"
+		"Modifiers"
+		{
+			"ExplosionCreature_Bash_Modifier"
+			{
+				"Passive"		"1"
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance"		"25"
+						"OnSuccess"
+						{
+							"Damage"
+							{
+								"Damage"		"%damage"
+								"Target"		"TARGET"
+								"Type"			"DAMAGE_TYPE_PHYSICAL"
+							}
+							"Stun"
+							{
+								"Target"		"TARGET"
+								"Duration"		"%duration"
+							}
+						}
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"damage"		"25"
+			}
+			"02"
+			{
+				"var_type" "FIELD_FLOAT"
+				"duration"		"1.8"
+			}
+		}
+	}
+	/////////////////////////
+	///爆发生物：灭
+	////////////////////////
+	"ExplosionCreature_Die"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"phantom_assassin_coup_de_grace"
+		"Modifiers"
+		{
+			"ExplosionCreature_Die_Modifier"
+			{	
+				"Passive"		"1"
+				"OnAttackStart"
+				{
+					"Random"
+					{
+						"Chance"		"5"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName"		"DieCritModifier"
+								"Target"			"CASTER"
+							}
+						}
+					}
+				}
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"		"DieCritModifier"
+						"Target"			"CASTER"
+					}
+				}
+			}
+			"DieCritModifier"
+			{
+				"IsHidden"		"1"
+				"Properties"
+    			{
+    				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"			"3000"
+    			}
+			}
+		}
+
+	}
+	////============================    真菌生物       ==================================================
+	///////////////////////////
+	//真菌生物：病毒
+	//////////////////////////
+	"FungusCreature_Virus"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"					"1"
+		"AbilityTextureName"		"shadow_demon_disruption"
+		//"AbilityManaCost"			"90"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"Virus_Modifier"
+				"Target"
+				{
+					"Center"		"CASTER"
+					"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				    "Radius"    "%radius"
+				}
+			}
+		}
+		"Modifiers"
+		{
+			"Virus_Modifier"
+			{
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Duration"			"%duration"
+				"ThinkInterval"		"1"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Damage"		"%damage"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Target"		"TARGET"
+					}
+				}
+			}
+		}
+			"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"damage"		"8"
+			}
+			"02"
+			{
+				"var_type" "FIELD_FLOAT"
+				"duration"		"20.0"
+			}
+			"03"
+			{
+				"var_type" "FIELD_FLOAT"
+				"radius"		"375.0"
+			}
+		}
+	}
+	///////////////////////////
+	//真菌生物：寄生
+	//////////////////////////
+	"FungusCreature_Parasitic"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityTextureName"		"shadow_demon_shadow_poison"
+		"MaxLevel"					"1"
+		"AbilityCastRange"			"800"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"Parasitic_Modifier"
+				"Target"				"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"Parasitic_Modifier"
+			{
+				"Duration"			"%duration"
+				"THinkInterval"		"0.25"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Damage"		"%damage"
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"damage"		"28"
+			}
+			"02"
+			{
+				"var_type" "FIELD_FLOAT"
+				"duration"		"120.0"
+			}
+		}
+	}
+	///////////////////////////
+	//真菌生物：残废
+	//////////////////////////
+	"FungusCreature_Cripple"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityTextureName"		"shadow_demon_demonic_purge"
+		"MaxLevel"					"1"
+		"AbilityCastRange"			"800"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"Cripple_Modifier"
+				"Target"				"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"Cripple_Modifier"
+			{
+				"Duration"			"%duration"
+				"Properties"
+   				 {
+   				 	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"			"-500"
+   				 	"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"			"-320"
+   				 }
+			}
+		}
+		"AbilitySpecial"
+		{
+
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"duration"		"6.0"
+			}
+		}
+	}
+	///////////////////////////
+	//真菌生物：侵毒
+	//////////////////////////
+	"FungusCreature_AbusePoison"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityTextureName"		"shadow_demon_shadow_poison_release"
+		"MaxLevel"					"1"
+		"AbilityCastRange"			"800"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"AbusePoison_Modifier"
+				"Target"				"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"AbusePoison_Modifier"
+			{
+				"Duration"			"%duration"
+				"ThinkInterval"		"1"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%damage"	
+					}
+				}
+				"Properties"
+   				 {
+   				 	"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"			"-100"
+   				 }
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"damage"		"60.0"
+			}
+			"02"
+			{
+				"var_type" "FIELD_FLOAT"
+				"duration"		"5.0"
+			}
+		}
+	}
+	///////////////////////////
+	//真菌生物：噬魔
+	//////////////////////////
+	"FungusCreature_ManaBurn"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityTextureName"		"bane_fiends_grip"
+		"MaxLevel"					"1"
+		"AbilityCastRange"			"800"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"scripts/vscripts/Ability/FungusCreatureAbility/ManaBurn.lua"
+				"Function"			"ManaBurn"
+				"Target"			"TARGET"
+			}
+		}
+	}
+	///////////////////////////
+	//真菌生物：慢性毒
+	//////////////////////////
+	"FungusCreature_ChronicToxicity"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityTextureName"		"bane_enfeeble"
+		"MaxLevel"					"1"
+		"AbilityCastRange"			"800"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"ChronicToxicity_Modifier"
+				"Target"				"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"ChronicToxicity_Modifier"
+			{
+				"Duration"			"%duration"
+				"ThinkInterval"		"1"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%damage"	
+					}
+				}
+				"Properties"
+   				 {
+   				 	"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"			"-300"
+   				 	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"			"-50"
+   				 }
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"damage"		"10.0"
+			}
+			"02"
+			{
+				"var_type" "FIELD_FLOAT"
+				"duration"		"3.0"
+			} 
+		}
+	}
+	///////////////////////////
+	//真菌生物：噬力
+	//////////////////////////
+	"FungusCreature_ForceStealer"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"life_stealer_feast"
+		"Modifiers"
+		{
+			"ForceStealerPassive"
+			{
+				"Passive"		"1"
+				"OnAttackLanded"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"		"ForceStealerModifier"
+						"Target"			"TARGET"
+					}
+				}
+			}
+			"ForceStealerModifier"
+			{
+				"Duration"		"%duration"
+				"Properties"
+   				 {
+   				 	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"			"-150"
+   				 }
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"duration"		"3.0"
+			}
+		}
+	}
+	////===================   嗜血生物 ==========================================================
+	/////////////////////////////////
+	///嗜血生物：吸血 
+	////////////////////////////////
+	"BloodThirstyCreature_LifeSteal"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"					"1"	
+		"AbilityTextureName"		"life_stealer_feast"
+		"Modifiers"
+		{
+			"BloodThirstyCreature_LifeSteal_Modifier"
+			{
+				"Passive"		"1"
+				"OnAttackLanded"
+				{
+					"Lifesteal"
+					{
+						"Target"		"ATTACKER"
+						"LifestealPercent"		"40"
+					}
+				
+				}
+				"OnAbilityExecuted"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/Ability/BloodThirstyCreatureAbility/LifeSteal.lua"
+						"Function"			"LifeSteal"
+					}
+				}
+			}
+		}
+	}
+
+}

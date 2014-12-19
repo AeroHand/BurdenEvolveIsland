@@ -1,0 +1,108 @@
+// Dota Heroes File
+// NOTE: This is not for creating new heroes, this is for taking a currently existing hero as a template and overriding
+// the specified key-value combinations.  Use override_hero <hero_to_override> for this.
+"DOTAHeroes"
+{
+	"biont_doge"
+	{
+		"override_hero"		"npc_dota_hero_life_stealer"
+		"AbilityLayout"				"6"
+		"Ability1"			""
+		"Ability2"			""
+		"Ability3"			""
+		"Ability4"			""
+		"Ability5"			""
+		"Ability6"			""
+	}
+	"biont_SK"
+	{
+		"override_hero"		"npc_dota_hero_sand_king"
+		"AbilityLayout"				"6"
+		"Ability1"			""
+		"Ability2"			""
+		"Ability3"			""
+		"Ability4"			""
+		"Ability5"			""
+		"Ability6"			""
+	}
+	"biont_slark"
+	{
+		"override_hero"		"npc_dota_hero_slark"
+		"AbilityLayout"				"6"
+		"Ability1"			""
+		"Ability2"			""
+		"Ability3"			""
+		"Ability4"			""
+		"Ability5"			""
+		"Ability6"			""
+	}
+	"biont_venomancer"
+	{
+		"override_hero"		"npc_dota_hero_venomancer"
+		"AbilityLayout"				"6"
+		"Ability1"			""
+		"Ability2"			""
+		"Ability3"			""
+		"Ability4"			""
+		"Ability5"			""
+		"Ability6"			""
+	}
+	"biont_broodmother"
+	{
+		"override_hero"		"npc_dota_hero_broodmother"
+		"AbilityLayout"				"6"
+		"Ability1"			""
+		"Ability2"			""
+		"Ability3"			""
+		"Ability4"			""
+		"Ability5"			""
+		"Ability6"			""
+	}
+	"biont_ursa"
+	{
+		"override_hero"		"npc_dota_hero_ursa"
+		"AbilityLayout"				"6"
+		"Ability1"			""
+		"Ability2"			""
+		"Ability3"			""
+		"Ability4"			""
+		"Ability5"			""
+		"Ability6"			""
+	}
+	"biont_treant"
+	{
+		"override_hero"		"npc_dota_hero_treant"
+		"AbilityLayout"				"6"
+		"Ability1"			""
+		"Ability2"			""
+		"Ability3"			""
+		"Ability4"			""
+		"Ability5"			""
+		"Ability6"			""
+	}
+	"biont_enigma"
+	{
+		"override_hero"		"npc_dota_hero_enigma"
+		"AbilityLayout"				"6"
+		"Ability1"			""
+		"Ability2"			""
+		"Ability3"			""
+		"Ability4"			""
+		"Ability5"			""
+		"Ability6"			""
+	}
+	//////////////////////
+	//尖刺生物
+	/////////////////////
+	"biont_nyx_assassin"
+	{
+		"override_hero"		"npc_dota_hero_nyx_assassin"
+		"AbilityLayout"				"6"
+		"Ability1"			""
+		"Ability2"			""
+		"Ability3"			""
+		"Ability4"			""
+		"Ability5"			""
+		"Ability6"			""
+	}
+}

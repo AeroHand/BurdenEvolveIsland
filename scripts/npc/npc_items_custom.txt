@@ -1,0 +1,11 @@
+"DOTAAbilities"
+{
+	//weapon
+	//armour
+	//book
+	"item_book_of_etch"
+	{
+		"ID"		"1001"
+		
+	}
+}
